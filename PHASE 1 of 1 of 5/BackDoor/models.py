@@ -12,14 +12,44 @@ def load_user(user_id):
 	return User.query.get(int(user_id))
 
 
+class GENDER(enum.Enum):
+    male = 'M'
+    female = 'F'
+    retard = 'R'
+class GROUP(enum.Enum):
+    student = 'S'
+    faculty = 'F'
+    admin = 'A'
+    club = 'C'
 
 class User(db.Model, UserMixin):
+	__tablename__ = 'user'
+	
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(20), unique=True, nullable=False)
 	email = db.Column(db.String(120), unique=True, nullable=False)
 	image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
 	password = db.Column(db.String(60), nullable=False)
-	
+	first_name = db.Column(db.String(25), unique=False, nullable=False)
+	middle_name = db.Column(db.String(25), unique=False, nullable=True)
+	last_name = db.Column(db.String(25), unique=False, nullable=True)
+	dob
+	gender = db.Column(db.Enum(GENDER), default = GENDER.retard, nullable=False)
+	user_group = 
+
+	user = models.OneToOneField(User, on_delete = models.CASCADE)
+    programme = models.CharField(max_length = 2, choices = [('B','B.Tech'),('M','M.Tech'),('P','PhD'),('NA','Not Applicable')], default = 'NA')
+    department = models.ForeignKey(Department, on_delete = models.CASCADE)
+    semester = models.IntegerField(null = True)
+    user_group = models.CharField(max_length = 1, choices = [('S','Student'),('T','Teacher'),('A','Administration')])
+
+
+
+
+
+
+
+
 	overtimgInfo = db.relationship('InputInformation', backref='hidder', lazy=True)
 	revealimgInfo = db.relationship('CovertInput', backref='revealer', lazy=True)
 
