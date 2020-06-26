@@ -33,20 +33,20 @@ class User(db.Model, UserMixin):
 	first_name = db.Column(db.String(25), unique=False, nullable=False)
 	middle_name = db.Column(db.String(25), unique=False, nullable=True)
 	last_name = db.Column(db.String(25), unique=False, nullable=True)
-	dob
-	gender = db.Column(db.Enum(GENDER), default = GENDER.retard, nullable=False)
-	user_group = 
+	DOB = db.Column(db.DateTime, unique=False, nullable=True)
+	gender = db.Column(db.Enum(GENDER), default=GENDER.retard, nullable=False)
+	user_group = db.Column(db.Enum(GROUP), default=GROUP.student, nullable=False)
 
-	user = models.OneToOneField(User, on_delete = models.CASCADE)
-    programme = models.CharField(max_length = 2, choices = [('B','B.Tech'),('M','M.Tech'),('P','PhD'),('NA','Not Applicable')], default = 'NA')
-    department = models.ForeignKey(Department, on_delete = models.CASCADE)
-    semester = models.IntegerField(null = True)
-    user_group = models.CharField(max_length = 1, choices = [('S','Student'),('T','Teacher'),('A','Administration')])
-
+	student_table = db.relationship('StudentTable', backref='userInfo', lazy=True)
+	faculty_table = db.relationship('StudentTable', backref='userInfo', lazy=True)
+	admin_table = db.relationship('StudentTable', backref='userInfo', lazy=True)
+	club_table = db.relationship('StudentTable', backref='userInfo', lazy=True)
 
 
-
-
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 
 
@@ -55,11 +55,6 @@ class User(db.Model, UserMixin):
 
 	def __repr__(self):
 		return f"User('{self.username}', '{self.email}', '{self.image_file}')"
-
-
-
-
-
 
 class InputInformation(db.Model):
 	__tablename__ = 'inputinformation'
