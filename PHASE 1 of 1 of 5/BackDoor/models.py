@@ -96,8 +96,29 @@ class ClubTable(db.Model):
 	#The User would just be the Prof. in charge of the Club#
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
+class DAY(enum.ENUM):
+	mon = 'Monday'
+	tue = 'Tuesday'
+	wed = 'Wednesday'
+	thu = 'Thursday'
+	fri = 'Friday'
+class TimeTable(db.Model):
+	__tablename__ = timetable
 
-
+	branch =  = db.Column(db.Enum(BRANCH), nullable=False)
+	program = db. Column(db.Enum(PROGRAM), nullable=False)
+	year = db.Column(db.Enum(YEAR), default=YEAR.first, nullable=False)
+	day = db.Column(db.Enum(DAY), nullable=False)
+	slot1 = db.Column(db.String(30), default=None, nullable=True)
+	slot2 = db.Column(db.String(30), default=None, nullable=True)
+	slot3 = db.Column(db.String(30), default=None, nullable=True)
+	slot4 = db.Column(db.String(30), default=None, nullable=True)
+	slot5 = db.Column(db.String(30), default=None, nullable=True)
+	slot6 = db.Column(db.String(30), default=None, nullable=True)
+	slot7 = db.Column(db.String(30), default=None, nullable=True)
+	slot8 = db.Column(db.String(30), default=None, nullable=True)
+	slot9 = db.Column(db.String(30), default=None, nullable=True)
+	slot10 = db.Column(db.String(30), default=None, nullable=True)
 
 
 '''
