@@ -67,17 +67,29 @@ class StudentTable(db.Model):
 	program = db. Column(db.Enum(PROGRAM), nullable=False)
 	year = db.Column(db.Enum(YEAR), default=YEAR.first, nullable=False)
 
+
 class FacultyTable(db.Model):
 	__tablename__ = 'facultytable' 
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
-	FID
-	branch
-	position
+	FID = db.Column(db.String(8), unique=True, nullable=False)
+	branch = db.Column(db.Enum(BRANCH), nullable=False)
+	position = db.Column(db.String(50), nullable = True)
 
+
+class ADMIN_LEVEL(enum.Enum):
+	level1 = 'ONE'
+	level2 = 'TWO'
+	level3 = 'THREE'
 class AdminTable(db.model):
 	__tablename__ = 'admintable' 
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+	EID = db.Column(db.String(8), unique=True, nullable=False)
+	position = db.Column(db.String(50), nullable = True)
+	admin_level = db.Column(db.Enum(ADMIN_LEVEL), nullabl=True)
+
+
 	
 class ClubTable(db.Model):
 	__tablename__ = clubtable
