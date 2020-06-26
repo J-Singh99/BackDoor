@@ -38,23 +38,46 @@ class User(db.Model, UserMixin):
 	user_group = db.Column(db.Enum(GROUP), default=GROUP.student, nullable=False)
 
 	student_table = db.relationship('StudentTable', backref='userInfo', lazy=True)
-	faculty_table = db.relationship('StudentTable', backref='userInfo', lazy=True)
-	admin_table = db.relationship('StudentTable', backref='userInfo', lazy=True)
-	club_table = db.relationship('StudentTable', backref='userInfo', lazy=True)
+	faculty_table = db.relationship('FacultyTable', backref='userInfo', lazy=True)
+	admin_table = db.relationship('AdminTable', backref='userInfo', lazy=True)
+	club_table = db.relationship('ClubTable', backref='userInfo', lazy=True)
 
 
+class StudentTable(db.Model):
+	__tablename__ = 'studenttable'
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+	
+	SID
+
+	branch = Enum
+	program = Enum
+	year = Enum
+
+class FacultyTable(db.Model):
+	__tablename__ = 'facultytable' 
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+	
+	FID
+	branch
+	position
+
+class AdminTable(db.model):
+	__tablename__ = 'admintable' 
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+	
+class ClubTable(db.Model):
+	__tablename__ = clubtable
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 
-
+'''
 	overtimgInfo = db.relationship('InputInformation', backref='hidder', lazy=True)
 	revealimgInfo = db.relationship('CovertInput', backref='revealer', lazy=True)
 
 	def __repr__(self):
 		return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+
+
 
 class InputInformation(db.Model):
 	__tablename__ = 'inputinformation'
@@ -81,3 +104,4 @@ class Final_Stego(db.Model):
 	covertImg = db.Column(db.String(20), nullable=False)
 	
 	overtImgID = db.Column(db.Integer, db.ForeignKey('inputinformation.id'), unique=True, nullable=False)
+'''
