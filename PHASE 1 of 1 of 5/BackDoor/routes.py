@@ -10,7 +10,8 @@ import PIL, numpy
 #from steganographer.forms import RegistrationForm, LoginForm, UpdateAccountForm, StegoHide, StegoReveal
 
 # MODELS
-#from steganographer.models import User, InputInformation, Final_Stego, CovertInput, RevealedInfo 
+from BackDoor.models import User, StudentTable, FacultyTable
+from BackDoor.models import AdminTable, ClubTable 
 
 
 # ERRORS
