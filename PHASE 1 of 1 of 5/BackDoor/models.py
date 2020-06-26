@@ -42,16 +42,30 @@ class User(db.Model, UserMixin):
 	admin_table = db.relationship('AdminTable', backref='userInfo', lazy=True)
 	club_table = db.relationship('ClubTable', backref='userInfo', lazy=True)
 
-
+class BRANCH(enum.Enum):
+    aero = 'Aeronautical Engineering/'
+    cse = 'Computer Science and Engineering'
+    civil = 'Civil Engineering'
+    ece = 'Electronics and Communication Engineering'
+    electical = 'Electrical Engineering'
+    mech = 'Mechanical Engineering'
+class PROGRAM(enum.Enum):
+	btech = 'B. Tech'
+	mtch = 'M. Tech'
+	phd = 'Ph. D'
+class YEAR(enum.Enum):
+	first = '1'
+	second = '2'
+	third = '3'
+	fourth = '4'
 class StudentTable(db.Model):
 	__tablename__ = 'studenttable'
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
-	SID
-
-	branch = Enum
-	program = Enum
-	year = Enum
+	SID = db.Column(db.String(8), unique=True, nullable=False)
+	branch = db.Column(db.Enum(BRANCH), nullable=False)
+	program = db. Column(db.Enum(PROGRAM), nullable=False)
+	year = db.Column(db.Enum(YEAR), default=YEAR.first, nullable=False)
 
 class FacultyTable(db.Model):
 	__tablename__ = 'facultytable' 
