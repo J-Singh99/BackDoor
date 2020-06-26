@@ -12,37 +12,33 @@ import PIL, numpy
 # MODELS
 #from steganographer.models import User, InputInformation, Final_Stego, CovertInput, RevealedInfo 
 
-'''
+
 # ERRORS
 @app.errorhandler(404)
 def error_404(error):
-    return render_template('404.html'), 404
-
-
+    return render_template('404.html', title='Error 404'), 404
 @app.errorhandler(403)
 def error_403(error):
-    return render_template('403.html'), 403
-
-
+    return render_template('403.html', title='Error 403'), 403
 @app.errorhandler(500)
 def error_500(error):
-    return render_template('500.html'), 500
-'''
+    return render_template('500.html', title='Error 500'), 500
 
 
 
-
-'''
 # ROUTES
+
+@app.route('/')
+@app.route('/home')
+def home():
+	return render_template('home.html', title='Home')
+
+'''
 @app.route('/test')
 def test():
 	return render_template('500.html',title = 'TEST!!!!')
 
 
-@app.route('/')
-@app.route('/home')
-def home():
-	return render_template('home.html')
 
 @app.route('/register', methods = ['GET', 'POST'])
 def register():
