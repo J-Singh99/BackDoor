@@ -89,11 +89,15 @@ class AdminTable(db.model):
 	position = db.Column(db.String(50), nullable = True)
 	admin_level = db.Column(db.Enum(ADMIN_LEVEL), nullabl=True)
 
-
 	
 class ClubTable(db.Model):
 	__tablename__ = clubtable
+	
+	#The User would just be the Prof. in charge of the Club#
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+
+
 
 
 '''
@@ -102,8 +106,6 @@ class ClubTable(db.Model):
 
 	def __repr__(self):
 		return f"User('{self.username}', '{self.email}', '{self.image_file}')"
-
-
 
 class InputInformation(db.Model):
 	__tablename__ = 'inputinformation'
