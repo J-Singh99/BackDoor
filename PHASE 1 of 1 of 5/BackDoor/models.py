@@ -80,8 +80,11 @@ class StudentTable(db.Model):
 
 class FacultyTable(db.Model):
 	__tablename__ = 'facultytable' 
+	
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
+	enrol = db.relationship('Enrol', backref='enrolling_faculty', lazy=True)
+
 	FID = db.Column(db.String(8), unique=True, nullable=False)
 	branch = db.Column(db.Enum(BRANCH), nullable=False)
 	position = db.Column(db.String(50), nullable = True)
@@ -102,6 +105,7 @@ class ClubTable(db.Model):
 
 class Course(db.Model):
 	__tablename__ = course
+	enrol_info = db.relationship('Enrol', backref='enroled_course', lazy=True)
 
 	name = db.Column(db.String(50), unique=True, nullable=True)
 	code = db.Column(db.String(6), unique=True, nullable=False)
@@ -111,14 +115,27 @@ class Course(db.Model):
 	profsIDs = db.Column(db.String(27), unique=False, nullable=False)
 	tot_classes = db.Column(db.Integer, unique=False, nullable=False)
 
-class Assessments(object):
+class Enrol(db.Model):
+	__tablename__ = 'enrol'
+	fac_id = db.Column(db.Integer, db.ForeignKey('FacultyTable.FID'), nullable=False)
+	course_id = db.Column(db.Integer, db.ForeignKey('Course.code'), nullable=False)  
+	
+	branch = db.Column(db.Enum(BRANCH), nullable=False)
+	program = db. Column(db.Enum(PROGRAM), nullable=False)
+	year = db.Column(db.Enum(YEAR), default=YEAR.first, nullable=False)
+		
+
+class Assessments(db.Model):
 	__tablename__ = 'assessments'
 	
 	sub_code = db.Column(db.String(6), unique=False, nullable=False)
+	type_
+	points 	
 	branch
 	program
 	year
-		
+	name
+	description	
 
 
 class TimeTable(db.Model):
