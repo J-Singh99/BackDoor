@@ -81,7 +81,7 @@ class ADMIN_LEVEL(enum.Enum):
 	level1 = 'ONE'
 	level2 = 'TWO'
 	level3 = 'THREE'
-class AdminTable(db.model):
+class AdminTable(db.Model):
 	__tablename__ = 'admintable' 
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
@@ -95,6 +95,19 @@ class ClubTable(db.Model):
 	
 	#The User would just be the Prof. in charge of the Club#
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+
+class Course(db.Model):
+	__tablename__ = course
+
+	name = db.Column(db.String(50), unique=True, nullable=True)
+	code = db.Column(db.String(6), unique=True, nullable=False)
+	credits = db.Column(db.Integer, unique=False, nullable=True)
+	LTP = db.Column(db.String(3), unique=False, nullable=True)
+	objectives = db.Column(db.String(500), unique=False, nullable=True)
+	profsIDs = db.Column(db.String(27), unique=False, nullable=False)
+	tot_classes = db.Column(db.Integer, unique=False, nullable=False)
+
 
 class DAY(enum.ENUM):
 	mon = 'Monday'
