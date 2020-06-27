@@ -21,6 +21,33 @@ class GROUP(enum.Enum):
     faculty = 'F'
     admin = 'A'
     club = 'C'
+class BRANCH(enum.Enum):
+    aero = 'Aeronautical Engineering/'
+    cse = 'Computer Science and Engineering'
+    civil = 'Civil Engineering'
+    ece = 'Electronics and Communication Engineering'
+    electical = 'Electrical Engineering'
+    mech = 'Mechanical Engineering'
+class PROGRAM(enum.Enum):
+	btech = 'B. Tech'
+	mtch = 'M. Tech'
+	phd = 'Ph. D'
+class YEAR(enum.Enum):
+	first = '1'
+	second = '2'
+	third = '3'
+	fourth = '4'
+class ADMIN_LEVEL(enum.Enum):
+	level1 = 'ONE'
+	level2 = 'TWO'
+	level3 = 'THREE'
+class DAY(enum.ENUM):
+	mon = 'Monday'
+	tue = 'Tuesday'
+	wed = 'Wednesday'
+	thu = 'Thursday'
+	fri = 'Friday'
+
 
 class User(db.Model, UserMixin):
 	__tablename__ = 'user'
@@ -42,22 +69,6 @@ class User(db.Model, UserMixin):
 	admin_table = db.relationship('AdminTable', backref='userInfo', lazy=True)
 	club_table = db.relationship('ClubTable', backref='userInfo', lazy=True)
 
-class BRANCH(enum.Enum):
-    aero = 'Aeronautical Engineering/'
-    cse = 'Computer Science and Engineering'
-    civil = 'Civil Engineering'
-    ece = 'Electronics and Communication Engineering'
-    electical = 'Electrical Engineering'
-    mech = 'Mechanical Engineering'
-class PROGRAM(enum.Enum):
-	btech = 'B. Tech'
-	mtch = 'M. Tech'
-	phd = 'Ph. D'
-class YEAR(enum.Enum):
-	first = '1'
-	second = '2'
-	third = '3'
-	fourth = '4'
 class StudentTable(db.Model):
 	__tablename__ = 'studenttable'
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -67,7 +78,6 @@ class StudentTable(db.Model):
 	program = db. Column(db.Enum(PROGRAM), nullable=False)
 	year = db.Column(db.Enum(YEAR), default=YEAR.first, nullable=False)
 
-
 class FacultyTable(db.Model):
 	__tablename__ = 'facultytable' 
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -76,11 +86,6 @@ class FacultyTable(db.Model):
 	branch = db.Column(db.Enum(BRANCH), nullable=False)
 	position = db.Column(db.String(50), nullable = True)
 
-
-class ADMIN_LEVEL(enum.Enum):
-	level1 = 'ONE'
-	level2 = 'TWO'
-	level3 = 'THREE'
 class AdminTable(db.Model):
 	__tablename__ = 'admintable' 
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -88,14 +93,12 @@ class AdminTable(db.Model):
 	EID = db.Column(db.String(8), unique=True, nullable=False)
 	position = db.Column(db.String(50), nullable = True)
 	admin_level = db.Column(db.Enum(ADMIN_LEVEL), nullabl=True)
-
 	
 class ClubTable(db.Model):
 	__tablename__ = clubtable
 	
 	#The User would just be the Prof. in charge of the Club#
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
 
 class Course(db.Model):
 	__tablename__ = course
@@ -108,13 +111,16 @@ class Course(db.Model):
 	profsIDs = db.Column(db.String(27), unique=False, nullable=False)
 	tot_classes = db.Column(db.Integer, unique=False, nullable=False)
 
+class Assessments(object):
+	__tablename__ = 'assessments'
+	
+	sub_code = db.Column(db.String(6), unique=False, nullable=False)
+	branch
+	program
+	year
+		
 
-class DAY(enum.ENUM):
-	mon = 'Monday'
-	tue = 'Tuesday'
-	wed = 'Wednesday'
-	thu = 'Thursday'
-	fri = 'Friday'
+
 class TimeTable(db.Model):
 	__tablename__ = timetable
 
