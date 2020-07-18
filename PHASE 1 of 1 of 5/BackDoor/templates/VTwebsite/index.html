@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Layout</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+   
+
+    <nav class="zone blue sticky">
+        <ul class="main-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="">Button</a></li>
+            <li><a href="">Our Team</a></li>
+            <li class="push">
+                <a href="">Sign-Up</a>
+                <a href="">Log-In</a>
+              </li>
+    </ul>
+    <div id="menuToggle">
+      <!--
+      A fake / hidden checkbox is used as click reciever,
+      so you can use the :checked selector on it.
+      -->
+      <input type="checkbox" />
+      
+      <!--
+      Some spans to act as a hamburger.
+      
+      They are acting like a real hamburger,
+      not that McDonalds stuff.
+      -->
+      <span></span>
+      <span></span>
+      <span></span>
+      
+      <!--
+      Too bad the menu has to be inside of the button
+      but hey, it's pure CSS magic.
+      -->
+      <ul id="menu">
+        <a href="Dashboard.html"><li>Dashboard</li></a>
+        <a href="Profile.html"><li>Profile</li></a>
+        <a href="Assessments.html"><li>Assessments</li></a>
+        <a href="Attendance.html"><li>Attendance</li></a>
+        <a href="Grades.html"><li>Grades</li></a>
+        <a href="#"><li>TimeTable</li></a>
+        <a href="#"><li>Events</li></a>
+        <a href="#"><li>Documents</li></a>
+      </ul>
+    </div>
+    </nav>
+
+
+  <div class="container">
+      <img class="cover" src="img/cover.jpg">
+      <div class="coverText">
+          <h1>College++</h1>
+          <h2>One stop for all you college needs</h2>
+        </div>
+  </div>
+
+  <div class="zone blue grid-wrapper">
+      <div class="card zone">
+          <img src="./img/startup1.jpg">
+          <div class="text">
+              <h1>Attendance</h1>
+              <p>aaa aaa aaa aaa aaa aaa aaa aaa</p>
+              <button>Learn more</button>
+          </div>
+      </div>
+    <div class="card zone"><img src="./img/startup2.jpg">
+        <div class="text">
+            <h1>Grades</h1>
+            <p>blah blah blah</p>
+            <button>Learn more</button>
+        </div>
+    </div>
+    <div class="card zone"><img src="./img/startup3.jpg">
+        <div class="text">
+            <h1>Timetable</h1>
+            <p>blah blah blah</p>
+            <button>Learn more</button>
+        </div>
+    </div>
+    <div class="card zone"><img src="./img/startup3.jpg">
+        <div class="text">
+            <h1>Other Stuff</h1>
+            <p>blah blah blah</p>
+            <button>Learn more</button>
+        </div>
+    </div>
+  </div>
+  <footer class="zone"><p>Created by: Jaspreet | Dhruv | Vernie</p></footer>
+</div>
+</body>
+</html>
+
+
+<script>
+    function myFunction() {
+      var x = document.getElementById("demo");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else { 
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+    </script>
