@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Layout</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+  <nav class="zone blue sticky">
+    <ul class="main-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="">Button</a></li>
+        <li><a href="">Our Team</a></li>
+        <li class="push">
+            <a href="">Sign-Up</a>
+            <a href="">Log-In</a>
+          </li>
+</ul>
+<div id="menuToggle">
+  <!--
+  A fake / hidden checkbox is used as click reciever,
+  so you can use the :checked selector on it.
+  -->
+  <input type="checkbox" />
+  
+  <!--
+  Some spans to act as a hamburger.
+  
+  They are acting like a real hamburger,
+  not that McDonalds stuff.
+  -->
+  <span></span>
+  <span></span>
+  <span></span>
+  
+  <!--
+  Too bad the menu has to be inside of the button
+  but hey, it's pure CSS magic.
+  -->
+  <ul id="menu">
+    <a href="Dashboard.html"><li>Dashboard</li></a>
+    <a href="Profile.html"><li>Profile</li></a>
+    <a href="Assessments.html"><li>Assessments</li></a>
+    <a href="Attendance.html"><li>Attendance</li></a>
+    <a href="#"><li>Grades</li></a>
+    <a href="#"><li>TimeTable</li></a>
+    <a href="#"><li>Events</li></a>
+    <a href="#"><li>Documents</li></a>
+  </ul>
+</div>
+</nav>
+
+
+    <div class="sec_container">
+        <img class="sec_cover" src="#">
+        <div class="sec_coverText">
+          <h1>Attendance</h1>
+        </div>
+    </div>
+
+
+    <div class="zone blue grid-wrapper">
+      
+        <div class="card zone">
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+              google.charts.load("current", {packages:["corechart"]});
+              google.charts.setOnLoadCallback(drawChart);
+              function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                  ['Total Classes', 'Missed'],
+                  ['Attended',     4],
+                  ['missed',     5]
+                ]);
+        
+                var options = {
+                  title: 'My Daily Activities',
+                  pieHole: 0.4,
+                };
+        
+                var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+                chart.draw(data, options);
+              }
+            </script>
+          
+            <body>
+                <div id="donutchart" style="width: relative; height: relative;"></div>
+            </body>
+        
+            <div class="text">
+                <h1>Grades</h1>
+            </div>
+            
+        </div>
+    
+        <div class="card zone">
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+              google.charts.load("current", {packages:["corechart"]});
+              google.charts.setOnLoadCallback(drawChart);
+              function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                  ['Total Classes', 'Missed'],
+                  ['Attended',     4],
+                  ['missed',     5]
+                ]);
+        
+                var options = {
+                  title: 'My Daily Activities',
+                  pieHole: 0.4,
+                };
+        
+                var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+                chart.draw(data, options);
+              }
+            </script>
+          
+            <body>
+                <div id="donutchart" style="width: relative; height: relative;"></div>
+            </body>
+        
+            <div class="text">
+                <h1>Grades</h1>
+            </div>
+            
+        </div>
+
+        <div class="card zone">
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+              google.charts.load("current", {packages:["corechart"]});
+              google.charts.setOnLoadCallback(drawChart);
+              function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                  ['Total Classes', 'Missed'],
+                  ['Attended',     4],
+                  ['missed',     5]
+                ]);
+        
+                var options = {
+                  title: 'My Daily Activities',
+                  pieHole: 0.4,
+                };
+        
+                var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+                chart.draw(data, options);
+              }
+            </script>
+          
+            <body>
+                <div id="donutchart" style="width: relative; height: relative;"></div>
+            </body>
+        
+            <div class="text">
+                <h1>Grades</h1>
+            </div>
+            
+        </div>
+
+    </div>
+
+  
+    <footer class="zone">
+        <p>Created by: Jaspreet | Dhruv | Vernie</p>
+    </footer>
+
+    
+
+</body>
+</html>
+
+
+<script>
+    function myFunction() {
+      var x = document.getElementById("demo");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else { 
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+    </script>

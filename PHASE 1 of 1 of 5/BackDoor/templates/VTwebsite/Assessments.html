@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Layout</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="stylesheet" type="text/css" href="./ass_style.css">
+</head>
+<body>
+
+    <div>
+        <h1>'#'
+        </h1>
+    </div>
+
+    <nav class="zone blue sticky">
+        <ul class="main-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="">Button</a></li>
+            <li><a href="">Our Team</a></li>
+            <li class="push">
+                <a href="">Sign-Up</a>
+                <a href="">Log-In</a>
+              </li>
+        </ul>
+    <div id="menuToggle">
+      <!--
+      A fake / hidden checkbox is used as click reciever,
+      so you can use the :checked selector on it.
+      -->
+      <input type="checkbox" />
+      
+      <!--
+      Some spans to act as a hamburger.
+      
+      They are acting like a real hamburger,
+      not that McDonalds stuff.
+      -->
+      <span></span>
+      <span></span>
+      <span></span>
+      
+      <!--
+      Too bad the menu has to be inside of the button
+      but hey, it's pure CSS magic.
+      -->
+      <ul id="menu">
+        <a href="Dashboard.html"><li>Dashboard</li></a>
+        <a href="Profile.html"><li>Profile</li></a>
+        <a href="Assessments.html"><li>Assessments</li></a>
+        <a href="Attendance.html"><li>Attendance</li></a>
+        <a href="Grades.html"><li>Grades</li></a>
+        <a href="#"><li>TimeTable</li></a>
+        <a href="#"><li>Events</li></a>
+        <a href="#"><li>Documents</li></a>
+      </ul>
+    </div>
+    </nav>
+
+
+
+<div>
+    <h1>
+        <span class="yellow">Assignments</span>
+    </h1>
+</div>
+
+        
+    <table class="container">
+        
+        <thead>
+            <tr>
+                <th><h1>DATE</h1></th>
+                <th><h1>SUBJECT</h1></th>
+                <th><h1>TITLE</h1></th>
+                <th><h1>STATUS</h1></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>12/3/2020</td>
+                <td>MAN104</td>
+                <td>Laplace Transformation</td>
+                <td>Pending</td>
+            </tr>
+            <tr>
+                <td>12/3/2020</td>
+                <td>MAN104</td>
+                <td>Laplace Transformation</td>
+                <td>Pending</td>
+            </tr>
+            <tr>
+                <td>12/3/2020</td>
+                <td>MAN104</td>
+                <td>Laplace Transformation</td>
+                <td>Pending</td>
+            </tr>
+            <tr>
+                <td>12/3/2020</td>
+                <td>MAN104</td>
+                <td>Laplace Transformation</td>
+                <td>Pending</td>
+            </tr>
+            <tr>
+                <td>12/3/2020</td>
+                <td>MAN104</td>
+                <td>Laplace Transformation</td>
+                <td>Pending</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</body>
+</html>
+
+
+<script>
+    function myFunction() {
+      var x = document.getElementById("demo");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else { 
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+    </script>
