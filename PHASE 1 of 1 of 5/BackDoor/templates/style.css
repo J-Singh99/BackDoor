@@ -1,12 +1,3 @@
-/*
-    Rule of thumb: Use grid when we have grid-like views (such sa cards)
-    such as tables, cards, albums or anything where we need to manipulate different items in columns or rows
-    In all other use cases consider using flex.
-
-    The following is a great template for doing page LAYOUTS. From here you can easily continue your own project.
-*/
-
-/* Resetting margin since some browsers have their own set margin */
 body {
     margin: 0 auto;
     font-family: Helvetica;
