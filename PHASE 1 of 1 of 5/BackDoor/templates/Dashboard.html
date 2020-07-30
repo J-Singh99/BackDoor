@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Basic Layout</title>
-  <link rel="stylesheet" type="text/css" href="./style.css">
+  
+  {% if title %}
+    <title>{{ title }}</title>
+  {% else %}
+    <title>Steganographer</title>
+  {% endif %}
+
+  <link rel="stylesheet" type="text/css" href='{{url_for("static", filename="style.css")}}'>
 </head>
 <body>
   <nav class="zone blue sticky">
@@ -55,7 +61,7 @@
 
 
   <div class="sec_container">
-    <img class="sec_cover" src="img/cover1.jpg">
+    <img class="sec_cover" src="{{url_for('static', filename='img/cover1.jpg')}}" alt="About Image">
     <div class="sec_coverText">
       <h1>Welcome, User</h1>
     </div>
@@ -63,7 +69,7 @@
 
   <div class="zone blue grid-wrapper">
       <div class="card zone">
-          <img src="./img/DS.jpg">
+          <img src="{{url_for('static', filename='img/DS.jpg')}}" alt="About Image">
           <div class="text">
               <h1>Data Structures</h1>
               <p>Subject code: CSN102</p>
@@ -72,7 +78,8 @@
               <button>Attendance</button>
           </div>
       </div>
-    <div class="card zone"><img src="./img/DELD.jpg">
+    <div class="card zone">
+      <img src="{{url_for('static', filename='img/DELD.jpg')}}" alt="About Image">
         <div class="text">
             <h1>Digital Electronics and Logic Design</h1>
             <p>Subject code: CSN103</p>  
@@ -81,7 +88,8 @@
             <button>Attendance</button>
         </div>
     </div>
-    <div class="card zone"><img src="./img/ECE.jpg">
+    <div class="card zone">
+      <img src="{{url_for('static', filename='img/ECE.jpg')}}" alt="About Image">
         <div class="text">
             <h1>Introduction to Electronics</h1>
             <p>Subject code: ESC205</p>  
@@ -91,7 +99,8 @@
         </div>
     </div>
 
-    <div class="card zone"><img src="./img/MATH.jpg">
+    <div class="card zone">
+      <img src="{{url_for('static', filename='img/MATH.jpg')}}" alt="About Image">
         <div class="text">
             <h1>Mathematics</h1>
             <p>Subject code: MAN105</p>  
@@ -101,7 +110,8 @@
         </div>
     </div>
 
-    <div class="card zone"><img src="./img/EVS.png">
+    <div class="card zone">
+      <img src="{{url_for('static', filename='img/EVS.png')}}" alt="About Image">
         <div class="text">
             <h1>Environmental Sciences</h1>
             <p>Subject code: GSC101</p>  
@@ -111,7 +121,8 @@
         </div>
     </div>
 
-    <div class="card zone"><img src="./img/ETHICS.jpg">
+    <div class="card zone">
+      <img src="{{url_for('static', filename='img/ETHICS.jpg')}}" alt="About Image">
         <div class="text">
             <h1>Ethics and Self Awareness</h1>
             <p>Subject code: HSS101</p>  
