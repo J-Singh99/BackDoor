@@ -87,7 +87,7 @@ class FacultyTable(db.Model):
 	
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
-	enrol = db.relationship('Enrol', backref='enrolling_faculty', lazy=True)
+#	enrol = db.relationship('Enrol', backref='enrolling_faculty', lazy=True)
 
 	FID = db.Column(db.String(8), primary_key=True, unique=True, nullable=False)
 	branch = db.Column(db.Enum(BRANCH), nullable=False)
@@ -110,8 +110,9 @@ class ClubTable(db.Model):
 	
 class Course(db.Model):
 	__tablename__ = 'course'
-	enrol_info = db.relationship('Enrol', backref='enroled_course', lazy=True)
+#	enrol_info = db.relationship('Enrol', backref='enroled_course', lazy=True)
 
+	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(50), unique=True, nullable=True)
 	code = db.Column(db.String(6), primary_key=True, unique=True, nullable=False)
 	credits = db.Column(db.Integer, unique=False, nullable=True)
@@ -122,8 +123,8 @@ class Course(db.Model):
 
 class Enrol(db.Model):
 	__tablename__ = 'enrol'
-	fac_id = db.Column(db.Integer, db.ForeignKey('FacultyTable.FID'), nullable=False)
-	course_id = db.Column(db.Integer, db.ForeignKey('Course.code'), nullable=False)  
+	fac_id = db.Column(db.Integer, db.ForeignKey('facultytable.FID'), nullable=False)
+	course_id = db.Column(db.Integer, db.ForeignKey('course.id'), nullable=False)  
 	
 	id = db.Column(db.Integer, primary_key=True)
 	branch = db.Column(db.Enum(BRANCH), nullable=False)

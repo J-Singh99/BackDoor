@@ -6,6 +6,7 @@ import secrets, os
 from PIL import Image
 import PIL, numpy
 
+from BackDoor import app, db, bcrypt
 # FORMS
 #from steganographer.forms import RegistrationForm, LoginForm, UpdateAccountForm, StegoHide, StegoReveal
 
@@ -31,7 +32,7 @@ def error_500(error):
 
 @app.route('/test')
 def test():
-	return render_template('home.html', title='TEST PAGE')
+	return render_template('Dashboard.html', title='TEST PAGE')
 
 
 @app.route('/')
