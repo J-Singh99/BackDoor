@@ -5,6 +5,8 @@ from BackDoor import db, login_manager
 
 from flask_login import UserMixin
 from flask_appbuilder.models.mixins import ImageColumn
+#from db import PrimaryKeyConstraint
+
 
 
 @login_manager.user_loader
@@ -41,7 +43,7 @@ class ADMIN_LEVEL(enum.Enum):
 	level1 = 'ONE'
 	level2 = 'TWO'
 	level3 = 'THREE'
-class DAY(enum.ENUM):
+class DAY(enum.Enum):
 	mon = 'Monday'
 	tue = 'Tuesday'
 	wed = 'Wednesday'
@@ -71,9 +73,11 @@ class User(db.Model, UserMixin):
 
 class StudentTable(db.Model):
 	__tablename__ = 'studenttable'
+
+	#__table_args__ = ( PrimaryKeyConstraint('user_id', 'SID'),)
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
-	SID = db.Column(db.String(8), unique=True, nullable=False)
+	SID = db.Column(db.String(8), primary_key=True, unique=True, nullable=False)
 	branch = db.Column(db.Enum(BRANCH), nullable=False)
 	program = db. Column(db.Enum(PROGRAM), nullable=False)
 	year = db.Column(db.Enum(YEAR), default=YEAR.first, nullable=False)
@@ -85,7 +89,7 @@ class FacultyTable(db.Model):
 	
 	enrol = db.relationship('Enrol', backref='enrolling_faculty', lazy=True)
 
-	FID = db.Column(db.String(8), unique=True, nullable=False)
+	FID = db.Column(db.String(8), primary_key=True, unique=True, nullable=False)
 	branch = db.Column(db.Enum(BRANCH), nullable=False)
 	position = db.Column(db.String(50), nullable = True)
 
@@ -93,22 +97,23 @@ class AdminTable(db.Model):
 	__tablename__ = 'admintable' 
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-	EID = db.Column(db.String(8), unique=True, nullable=False)
+	EID = db.Column(db.String(8), primary_key=True, unique=True, nullable=False)
 	position = db.Column(db.String(50), nullable = True)
-	admin_level = db.Column(db.Enum(ADMIN_LEVEL), nullabl=True)
+	admin_level = db.Column(db.Enum(ADMIN_LEVEL), nullable=True)
 	
 class ClubTable(db.Model):
-	__tablename__ = clubtable
+	__tablename__ = 'clubtable'
 	
 	#The User would just be the Prof. in charge of the Club#
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
+	CID = db.Column(db.String(8), primary_key=True, unique=True, nullable=False)
+	
 class Course(db.Model):
-	__tablename__ = course
+	__tablename__ = 'course'
 	enrol_info = db.relationship('Enrol', backref='enroled_course', lazy=True)
 
 	name = db.Column(db.String(50), unique=True, nullable=True)
-	code = db.Column(db.String(6), unique=True, nullable=False)
+	code = db.Column(db.String(6), primary_key=True, unique=True, nullable=False)
 	credits = db.Column(db.Integer, unique=False, nullable=True)
 	LTP = db.Column(db.String(3), unique=False, nullable=True)
 	objectives = db.Column(db.String(500), unique=False, nullable=True)
@@ -120,6 +125,7 @@ class Enrol(db.Model):
 	fac_id = db.Column(db.Integer, db.ForeignKey('FacultyTable.FID'), nullable=False)
 	course_id = db.Column(db.Integer, db.ForeignKey('Course.code'), nullable=False)  
 	
+	id = db.Column(db.Integer, primary_key=True)
 	branch = db.Column(db.Enum(BRANCH), nullable=False)
 	program = db. Column(db.Enum(PROGRAM), nullable=False)
 	year = db.Column(db.Enum(YEAR), default=YEAR.first, nullable=False)
@@ -128,7 +134,9 @@ class Enrol(db.Model):
 class Assessments(db.Model):
 	__tablename__ = 'assessments'
 	
+	id = db.Column(db.Integer, primary_key=True)
 	sub_code = db.Column(db.String(6), unique=False, nullable=False)
+'''
 	type_
 	points 	
 	branch
@@ -136,12 +144,13 @@ class Assessments(db.Model):
 	year
 	name
 	description	
-
+'''
 
 class TimeTable(db.Model):
-	__tablename__ = timetable
+	__tablename__ = 'timetable'
 
-	branch =  = db.Column(db.Enum(BRANCH), nullable=False)
+	id = db.Column(db.Integer, primary_key=True)
+	branch = db.Column(db.Enum(BRANCH), nullable=False)
 	program = db. Column(db.Enum(PROGRAM), nullable=False)
 	year = db.Column(db.Enum(YEAR), default=YEAR.first, nullable=False)
 	day = db.Column(db.Enum(DAY), nullable=False)
