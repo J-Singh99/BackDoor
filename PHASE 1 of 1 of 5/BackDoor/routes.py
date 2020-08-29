@@ -32,7 +32,7 @@ def error_500(error):
 
 @app.route('/test')
 def test():
-	return render_template('Dashboard.html', title='TEST PAGE')
+	return render_template('base.html', title='TEST PAGE')
 
 
 @app.route('/')

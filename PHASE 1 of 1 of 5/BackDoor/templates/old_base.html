@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <div class = 'importsAndStuff'>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href='{{url_for("static", filename="vendor/bootstrap/css/bootstrap.min.css")}}'rel="stylesheet">
+    
+    <link href='{{url_for("static", filename="vendor/icofont/icofont.min.css")}}' rel="stylesheet">
+    
+    <link href='{{url_for("static", filename="vendor/boxicons/css/boxicons.min.css")}}' rel="stylesheet">
+    
+    <link href='{{url_for("static", filename="vendor/owl.carousel/assets/owl.carousel.min.css")}}' rel="stylesheet">
+    
+    <link href='{{url_for("static", filename="vendor/venobox/venobox.css")}}' rel="stylesheet">
+    
+   <link href='{{url_for("static", filename="vendor/aos/aos.css")}}' rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" type="text/css" href='{{url_for("static", filename="style.css")}}'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  {% if title %}
+    <title>{{ title }}</title>
+  {% else %}
+    <title>Steganographer</title>
+  {% endif %}
+  </div>
+</head>
+
+<body>
+  
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}  
+  
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light">
+          <a href="{{ url_for('home')}}">STEGANOGRAPHER</a>
+        </h1>
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="{{ url_for('home') }}">Home</a></li>
+          {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
+          {% endif %}
+          <li class="drop-down"><a href="#">Activities</a>
+            <ul>
+              <li><a href="{{ url_for('hide') }} ">Hide</a></li>
+              <li><a href="{{ url_for('reveal') }}">Reveal</a></li>
+            </ul>
+          </li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="https://github.com/J-Singh99/Image-Steganographer.git">Source Code</a></li>
+          
+          {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          {% else %}
+            <li><a href="{{ url_for('login') }}">Log In</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </header> <!-- End Header -->
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="container text-center text-md-left" data-aos="fade-up">
+    {% block hero %}{% endblock hero %}
+    
+    </div>
+  </section> <!-- End Hero -->
+  
+
+
+  <main id="main">
+  
+    {% block content %}{% endblock content %}
+    {% block about %}{% endblock about %}
+    {% block features %}{% endblock features %}
+    {% block services %}{% endblock services %}
+    {% block team %}{% endblock team %}
+    {% block footer %}{% endblock footer %}
+    
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  </main>
+
+  <div class='Imports'>
+   
+    <!-- Vendor JS Files -->
+    <script src='{{url_for("static", filename="vendor/jquery/jquery.min.js")}}'></script>
+    <script src='{{url_for("static", filename="vendor/bootstrap/js/bootstrap.bundle.min.js")}}'></script>
+    <script src='{{url_for("static", filename="vendor/jquery.easing/jquery.easing.min.js")}}'></script>
+    <script src='{{url_for("static", filename="vendor/owl.carousel/owl.carousel.min.js")}}'></script>
+    <script src='{{url_for("static", filename="vendor/isotope-layout/isotope.pkgd.min.js")}}'></script>
+    <script src='{{url_for("static", filename="vendor/venobox/venobox.min.js")}}'></script>
+    <script src='{{url_for("static", filename="vendor/aos/aos.js")}}'></script>
+  
+  <!--Template Main JS File -->
+
+    <script type="text/javascript" src='{{url_for("static", filename="main.js")}}'></script>
+  
+    <script src='{{url_for("static", filename="vendor/php-email-form/validate.js")}}'></script>
+  
+  <!--
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      -->
+  </div>
+
+</body>
